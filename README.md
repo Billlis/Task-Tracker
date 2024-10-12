@@ -1,4 +1,3 @@
-```markdown
 # Task Manager
 
 This is a simple command-line task management tool that allows you to add, update, delete, and list tasks. Each task has a status (e.g., "todo", "in-progress", "done") and a timestamp indicating when it was created and last updated. The tasks are stored in a JSON file (`tasks.json`).
@@ -54,7 +53,7 @@ Once the program starts, you can interact with it using the following commands:
 ### Example
 
 ```bash
-Type add, update, delete, list,(list done, list todo, list in progress) or exit: add Write a README file
+Type add, update, delete, list,(list done, list todo, list in progress) or exit: add "Write a README file"
 Task added successfully (ID: 1)
 
 Type add, update, delete, list,(list done, list todo, list in progress) or exit: list
@@ -97,5 +96,3 @@ Feel free to fork this project and submit pull requests. Any contributions, such
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
-This should now be properly formatted for easy copy-pasting into a `README.md` file.

@@ -1,56 +1,57 @@
-# from functions import get_todos, write_todos
+# from functions import get_tasks, write_tasks
 import functions
 
 while True:
-    user_action = input("Type add, show, edit, complete or exit: ")
+    user_action = input("Type add, update, delete, list,(list done, list todo, list in progress) or exit: ")
     user_action = user_action.strip()
 
     if user_action.startswith("add"):
-        todo = user_action[4:]
+        task = user_action[4:]
 
-        todos = functions.get_todos()
+        tasks = functions.get_tasks()
 
-        todos.append(todo + '\n')
+        tasks.append(task + '\n')
 
-        functions.write_todos(todos)
+        functions.write_tasks(tasks)
+        print("Task added successfully (ID: 1)")
+        #NA GINEI ALLAGI TO ID
+    elif user_action.startswith('list'):
 
-    elif user_action.startswith('show'):
+        tasks = functions.get_tasks()
 
-        todos = functions.get_todos()
-
-        for index, item in enumerate(todos):
+        for index, item in enumerate(tasks):
             item = item.strip('\n')
             row = f"{index + 1}-{item}"
             print(row)
-    elif user_action.startswith('edit'):
+    elif user_action.startswith('update'):
         try:
-            number = int(user_action[5:])
+            number = int(user_action[7:])
             print(number)
 
             number = number - 1
 
-            todos = functions.get_todos()
+            tasks = functions.get_tasks()
 
-            new_todo = input("Enter new todo: ")
-            todos[number] = new_todo + '\n'
+            new_task = input("Enter new task: ")
+            tasks[number] = new_task + '\n'
 
-            functions.write_todos(todos)
+            functions.write_tasks(tasks)
         except ValueError:
             print("Your command is not valid.")
             continue
 
-    elif user_action.startswith('complete'):
+    elif user_action.startswith('delete'):
         try:
-            number = int(user_action[9:])
+            number = int(user_action[7:])
 
-            todos = functions.get_todos()
+            tasks = functions.get_tasks()
             index = number - 1
-            todo_to_remove = todos[index].strip('\n')
-            todos.pop(index)
+            task_to_remove = tasks[index].strip('\n')
+            tasks.pop(index)
 
-            functions.write_todos(todos)
+            functions.write_tasks(tasks)
 
-            message = f"Todo {todo_to_remove} was removed from the list."
+            message = f"Task {task_to_remove} was removed from the list."
             print(message)
         except IndexError:
             print("There is no item with that number.")
